@@ -22,7 +22,7 @@ default['python']['install_method'] = 'package'
 
 if python['install_method'] == 'package'
   case platform
-  when "smartos"
+  when 'smartos'
     default['python']['prefix_dir']         = '/opt/local'
   else
     default['python']['prefix_dir']         = '/usr'
@@ -32,12 +32,12 @@ else
 end
 
 default['python']['binary'] = "#{node['python']['prefix_dir']}/bin/python"
-
+default['python']['custom_package_name'] = 'python27'
 default['python']['url'] = 'http://www.python.org/ftp/python'
 default['python']['version'] = '2.7.7'
 default['python']['checksum'] = '3b477554864e616a041ee4d7cef9849751770bc7c39adaf78a94ea145c488059'
-default['python']['configure_options'] = %W{--prefix=#{python['prefix_dir']}}
-default['python']['make_options'] = %W{install}
+default['python']['configure_options'] = %W(--prefix=#{python['prefix_dir']})
+default['python']['make_options'] = %w(install)
 
 default['python']['pip_location'] = "#{node['python']['prefix_dir']}/bin/pip"
 default['python']['virtualenv_location'] = "#{node['python']['prefix_dir']}/bin/virtualenv"

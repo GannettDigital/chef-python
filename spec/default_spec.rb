@@ -1,8 +1,10 @@
+require 'chefspec'
 require 'spec_helper'
+require 'fauxhai'
 
 describe 'python::default' do
   let :chef_run do
-    ChefSpec::Runner.new(platform: 'ubuntu', version: '12.04').converge described_recipe
+    ChefSpec::SoloRunner.converge(described_recipe)
   end
 
   before do

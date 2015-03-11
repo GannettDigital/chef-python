@@ -1,9 +1,9 @@
 #
-# Author:: Scott M. Likens <scott@mopub.com>
+# Author:: Jason Neves <jneves@gannett.com>
 # Cookbook Name:: python
-# Recipe:: test_exert
+# Recipe:: custom-package
 #
-# Copyright 2013, MoPub, Inc.
+# Copyright 2015
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,18 +18,20 @@
 # limitations under the License.
 #
 
-python_virtualenv "#{Chef::Config[:file_cache_path]}/virtualenv" do
-  interpreter 'python'
-  owner 'root'
-  group 'root'
-  action :create
-end
+# This recipe assumes that you have a custom package repository with
+# Python built and named as "python27"
 
-python_pip 'boto' do
-  action :install
-  virtualenv "#{Chef::Config[:file_cache_path]}/virtualenv"
-end
+python_pkgs = value_for_platform_family(
+  'debian'  => ['python27', 'python27-dev'],
+  'rhel'    => ['python27', 'python27-devel'],
+  'fedora'  => ['python27', 'python27-devel'],
+  'freebsd' => ['python27'],
+  'smartos' => ['python27'],
+  'default' => ['python27', 'python27-dev']
+  )
 
-python_pip 'psutil' do
-  action :install
+python_pkgs.each do |pkg|
+  package pkg do
+    action :install
+  end
 end
