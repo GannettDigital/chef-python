@@ -3,26 +3,23 @@ require 'chefspec'
 require 'spec_helper'
 require 'fauxhai'
 
-describe 'python::virtualenv' do
+describe 'python::custom-package' do
   let :chef_run do
     ChefSpec::SoloRunner.converge(described_recipe)
   end
 
   before do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
-    stub_command("/usr/bin/python get-pip-py").and_return(true)
-    allow(Chef::Config).to receive(:file_cache_path)
-      .and_return("...")
   end
 
-  it 'includes python::pip' do
+  it 'installs python27' do
     chef_run.converge(described_recipe)
-    expect(chef_run).to include_recipe('python::pip')
+    expect(chef_run).to install_package('python27')
   end
 
-  it 'installs virtualenv' do
+  it 'installs python-devel' do
     chef_run.converge(described_recipe)
-    expect(chef_run).to upgrade_python_pip('virtualenv')
+    expect(chef_run).to install_package('python27-devel')
   end
 
 end
