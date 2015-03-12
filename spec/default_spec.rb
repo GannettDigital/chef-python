@@ -5,7 +5,7 @@ require 'fauxhai'
 
 describe 'python::default' do
   let :chef_run do
-    ChefSpec::SoloRunner.new(file_cache_path: '/var/chef/cache')
+    ChefSpec::SoloRunner.new(file_cache_path: '/var/chef/cache').converge(described_recipe)
   end
 
   before do
