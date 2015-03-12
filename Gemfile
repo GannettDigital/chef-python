@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'berkshelf'
 gem 'coveralls', require: false
 gem 'rubocop'
+gem 'webmock'
 
 group :test do
   gem 'rubocop-checkstyle_formatter', require: false
