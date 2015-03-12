@@ -1,6 +1,10 @@
 # -*- encoding: utf-8 -*-
 source 'https://rubygems.org'
 
+gem 'berkshelf'
+gem 'coveralls', require: false
+gem 'rubocop'
+
 group :test do
   gem 'rubocop-checkstyle_formatter', require: false
   gem 'berkshelf', '~> 3.1'
