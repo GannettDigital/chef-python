@@ -5,14 +5,13 @@ require 'fauxhai'
 
 describe 'python::virtualenv' do
   let :chef_run do
-    ChefSpec::SoloRunner.converge(described_recipe)
+    ChefSpec::SoloRunner.new(file_cache_path: '/var/chef/cache')
   end
 
   before do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
     stub_command("/usr/bin/python get-pip-py").and_return(true)
-    allow(Chef::Config).to receive(:file_cache_path)
-      .and_return("...")
+    stub_command("/usr/local/bin/python2.7 get-pip-py").and_return(true)
   end
 
   it 'includes python::pip' do

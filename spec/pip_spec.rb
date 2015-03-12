@@ -5,17 +5,17 @@ require 'fauxhai'
 
 describe 'python::pip' do
   let :chef_run do
-    ChefSpec::SoloRunner.converge(described_recipe)
+     ChefSpec::SoloRunner.new(file_cache_path: '/var/chef/cache')
+#    ChefSpec::SoloRunner.converge(described_recipe)
   end
 
   before do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
     stub_command("/usr/bin/python get-pip-py").and_return(true)
-    allow(Chef::Config).to receive(:file_cache_path)
-      .and_return("...")
+    stub_command("/usr/local/bin/python2.7 get-pip-py").and_return(true)
   end
 
-  it 'creates get-pip.py in the Chef temporary path with mode 644' do
+  it 'creates get-pip.py in the Chef file_cache_path with mode 644' do
     chef_run.converge(described_recipe)
     expect(chef_run).to create_cookbook_file(File.join(Chef::Config[:file_cache_path], 'get-pip.py'))
   end
