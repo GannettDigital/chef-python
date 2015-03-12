@@ -16,7 +16,9 @@ describe 'python::pip' do
 
   it 'creates get-pip.py in the Chef file_cache_path with mode 644' do
     chef_run.converge(described_recipe)
-    expect(chef_run).to create_cookbook_file(File.join(Chef::Config[:file_cache_path], 'get-pip.py'))
+    expect(chef_run).to create_cookbook_file(File.join(Chef::Config[:file_cache_path], 'get-pip.py')).with(
+      :mode => '0644'
+    )
   end
 
   it 'executes get-pip.py to install pip' do
