@@ -55,5 +55,8 @@ end
 desc 'Run all tests on Travis'
 task travis: ['style', 'spec', 'integration:cloud']
 
+# Base tests
+task test: ['style', 'spec']
+
 # Default
 task default: ['style', 'spec', 'integration:vagrant']
