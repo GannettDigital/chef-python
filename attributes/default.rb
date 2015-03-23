@@ -32,7 +32,16 @@ else
 end
 
 default['python']['binary'] = "#{node['python']['prefix_dir']}/bin/python"
-default['python']['custom_package_name'] = 'python27'
+
+if python['install_method'] == 'custom_package'
+  case platform
+  when 'amazon'
+    default['python']['custom_package_name'] = 'python27alt'
+  else
+    default['python']['custom_package_name'] = 'python27'
+  end
+end
+
 default['python']['custom_binary'] = "#{node['python']['prefix_dir']}/bin/python2.7"
 default['python']['url'] = 'http://www.python.org/ftp/python'
 default['python']['version'] = '2.7.7'
