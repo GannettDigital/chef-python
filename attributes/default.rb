@@ -20,7 +20,7 @@
 
 default['python']['install_method'] = 'package'
 
-if python['install_method'] == 'package'
+if node['python']['install_method'] == 'package'
   case platform
   when 'smartos'
     default['python']['prefix_dir']         = '/opt/local'
@@ -33,7 +33,7 @@ end
 
 default['python']['binary'] = "#{node['python']['prefix_dir']}/bin/python"
 
-if python['install_method'] == 'custom_package'
+if node['python']['install_method'] == 'custom-package'
   case platform
   when 'amazon'
     default['python']['custom_package_name'] = 'python27alt'
