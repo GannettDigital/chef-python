@@ -131,6 +131,13 @@ Include default recipe in a run list, to get `python`, `pip` and `virtualenv`. I
 ### package
 Installs Python from packages.
 
+### custom-package
+Installs Python from a custom package repository
+
+ - default['python']['custom_package_name'] = 'python27' - Name of the custom package from the repository to install.  The repository must be provided through other means.
+ - default['python']['custom_binary'] = "#{node['python']['prefix_dir']}/bin/python2.7" - Location of the custom package binary
+
+
 ### source
 Installs Python from source.
 
