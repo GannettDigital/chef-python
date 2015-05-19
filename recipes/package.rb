@@ -39,6 +39,7 @@ end
 
 python_pkgs.each do |pkg|
   package pkg do
+    version node['python']['version']
     action :install
   end
 end

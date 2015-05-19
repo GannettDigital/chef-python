@@ -32,6 +32,7 @@ python_pkgs = value_for_platform_family(
 
 python_pkgs.each do |pkg|
   package pkg do
+    version node['python']['version']
     action :install
   end
 end
