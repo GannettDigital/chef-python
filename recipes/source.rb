@@ -45,7 +45,7 @@ packages = value_for_platform_family(
                 'libsasl2-dev',
                 'libgdbm-dev'
                ]
-  )
+)
 #
 packages.each do |dev_pkg|
   package dev_pkg
@@ -73,7 +73,7 @@ bash 'build-and-install-python' do
     'CPPFLAGS' => "-I#{node['python']['prefix_dir']} -I/usr/lib",
     'CXXFLAGS' => "-I#{node['python']['prefix_dir']} -I/usr/lib",
     'CFLAGS' => "-I#{node['python']['prefix_dir']} -I/usr/lib"
-    ) if platform?('ubuntu') && node['platform_version'].to_f >= 12.04
+  ) if platform?('ubuntu') && node['platform_version'].to_f >= 12.04
   not_if { ::File.exist?(install_path) }
 end
 

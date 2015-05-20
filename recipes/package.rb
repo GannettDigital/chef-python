@@ -34,11 +34,12 @@ else
     'freebsd' => ['python'],
     'smartos' => ['python27'],
     'default' => ['python', 'python-dev']
-    )
+  )
 end
 
 python_pkgs.each do |pkg|
   package pkg do
+    version node['python']['version']
     action :install
   end
 end

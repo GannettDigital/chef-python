@@ -28,10 +28,11 @@ python_pkgs = value_for_platform_family(
   'freebsd' => [node['python']['custom_package_name']],
   'smartos' => [node['python']['custom_package_name']],
   'default' => [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-dev"]
- )
+)
 
 python_pkgs.each do |pkg|
   package pkg do
+    version node['python']['version']
     action :install
   end
 end
