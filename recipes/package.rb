@@ -34,7 +34,7 @@ else
     'freebsd' => ['python'],
     'smartos' => ['python27'],
     'default' => ['python', 'python-dev']
-    )
+  )
 end
 
 python_pkgs.each do |pkg|
