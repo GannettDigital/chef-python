@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-default['python']['install_method'] = 'package'
+default['python']['install_method'] = 'custom-package'
 
 if node['python']['install_method'] == 'package'
   case platform
