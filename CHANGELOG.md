@@ -2,6 +2,11 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v1.4.10
+------
+
+- Rob Gindes: have to differentiate version between custom package installs and otherwise.
+
 v1.4.6
 ------
 
