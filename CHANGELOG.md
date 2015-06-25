@@ -2,6 +2,11 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v1.4.11
+------
+
+- Rob Gindes: added a dependency on our internal yum repo. changed default install method to custom package so it always installs the version/release in our repo.
+
 v1.4.10
 ------
 
