@@ -2,6 +2,10 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v1.4.12
+-----
+- Jason Neves: added yum-gd as an include in custom-package
+
 v1.4.11
 ------
 

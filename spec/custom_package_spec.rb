@@ -10,6 +10,10 @@ describe 'python::custom-package' do
     chef_run.node.set['python']['install_method'] = 'custom-package'
   end
 
+  it 'includes yum-gd' do
+    chef_run.converge(described_recipe)
+    expect(chef_run).to include_recipe('yum-gd')
+  end
 
   it 'installs python27' do
     chef_run.converge(described_recipe)
