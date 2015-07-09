@@ -2,6 +2,10 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v1.5.0
+-----
+- Jason Neves: removed depracated test suite from cookbook, will be replaced by new tests at a later date
+
 v1.4.12
 -----
 - Jason Neves: added yum-gd as an include in custom-package
