@@ -56,6 +56,7 @@ install_path = "#{node['python']['prefix_dir']}/bin/python#{version.split(/(^\d+
 
 remote_file "#{Chef::Config[:file_cache_path]}/Python-#{version}.tgz" do
   source "#{node['python']['url']}/#{version}/Python-#{version}.tgz"
+  checksum node['python']['checksum']
   mode '0644'
   not_if { ::File.exist?(install_path) }
 end
