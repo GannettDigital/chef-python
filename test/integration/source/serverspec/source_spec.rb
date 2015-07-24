@@ -85,8 +85,3 @@ describe file('/usr/local/bin/python') do
   it { should be_executable }
   it { should_not be_linked_to '/usr/local/bin/python27' }
 end
-
-describe command('/usr/local/bin/python --version') do
-  its(:stderr) { should contain('Python 2.7.9') }
-  its(:exit_status) { should eq 0 }
-end

@@ -46,17 +46,7 @@ case node['python']['install_method']
 when 'custom-package'
   default['python']['version'] = '2.7.9-1.el6.gd'
 when 'package'
-  case platform
-  when 'centos'
-    default['python']['version'] = '2.6.6-52.el6'
-  when 'ubuntu'
-    case node['platform_version']
-    when '12.04'
-      default['python']['version'] = '2.7.3-0ubuntu2.2'
-    when '10.04'
-      default['python']['version'] = '2.6.5-0ubuntu1.1'
-    end
-  end
+  default['python']['version'] = '2.6.6-52.el6'
 when 'source'
   default['python']['version'] = '2.7.9'
 end
