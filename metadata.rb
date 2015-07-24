@@ -4,11 +4,12 @@ maintainer_email  'noah@coderanger.net'
 license           'Apache 2.0'
 description       'Installs Python, pip and virtualenv. \
                    Includes LWRPs for managing Python packages with `pip` and `virtualenv` isolated Python environments.'
-version           '1.5.0'
+version           '1.5.1'
 
 depends           'build-essential'
 depends           'yum-epel'
 depends           'yum-gd'
+depends           'apt'
 
 recipe 'python', 'Installs python, pip, and virtualenv'
 recipe 'python::package', 'Installs python using packages.'

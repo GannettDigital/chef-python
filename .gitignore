@@ -6,6 +6,7 @@
 .*.sw[a-z]
 *.un~
 /cookbooks
+*.DS_Store
 
 # Bundler
 bin/*
@@ -14,4 +15,5 @@ bin/*
 .kitchen.local.yml
 
 Berksfile.lock
+Gemfile.lock
 coverage/
