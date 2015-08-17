@@ -23,12 +23,12 @@ default['python']['install_method'] = 'custom-package'
 if node['python']['install_method'] == 'package'
   case platform
   when 'smartos'
-    default['python']['prefix_dir']         = '/opt/local'
+    default['python']['prefix_dir'] = '/opt/local'
   else
-    default['python']['prefix_dir']         = '/usr'
+    default['python']['prefix_dir'] = '/usr'
   end
 else
-  default['python']['prefix_dir']         = '/usr/local'
+  default['python']['prefix_dir'] = '/usr/local'
 end
 
 default['python']['binary'] = "#{node['python']['prefix_dir']}/bin/python"
@@ -44,9 +44,14 @@ end
 
 case node['python']['install_method']
 when 'custom-package'
-  default['python']['version'] = '2.7.9-1.el6.gd'
+  case platform
+  when 'amazon'
+    default['python']['version'] = '2.7.9'
+  else
+    default['python']['version'] = '2.7.9-1.el6.gd'
+  end
 when 'package'
-  default['python']['version'] = '2.6.6-52.el6'
+  default['python']['version'] = '2.6.6-64.el6'
 when 'source'
   default['python']['version'] = '2.7.9'
 end
