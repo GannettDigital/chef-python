@@ -23,12 +23,12 @@ default['python']['install_method'] = 'custom-package'
 if node['python']['install_method'] == 'package'
   case platform
   when 'smartos'
-    default['python']['prefix_dir']         = '/opt/local'
+    default['python']['prefix_dir'] = '/opt/local'
   else
-    default['python']['prefix_dir']         = '/usr'
+    default['python']['prefix_dir'] = '/usr'
   end
 else
-  default['python']['prefix_dir']         = '/usr/local'
+  default['python']['prefix_dir'] = '/usr/local'
 end
 
 default['python']['binary'] = "#{node['python']['prefix_dir']}/bin/python"
