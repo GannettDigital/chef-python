@@ -26,6 +26,7 @@ platforms:
 suites:
 - name: default
   run_list:
+  - recipe[yum-gd]
   - recipe[python]
   attributes:
     python:
@@ -33,6 +34,7 @@ suites:
       virtualenv_version: 13.1.0
 - name: package
   run_list:
+  - recipe[yum-gd]
   - recipe[python]
   attributes:
     python:
@@ -41,6 +43,7 @@ suites:
       virtualenv_version: 13.1.0
 - name: source
   run_list:
+  - recipe[yum-gd]
   - recipe[python]
   attributes:
     python:
