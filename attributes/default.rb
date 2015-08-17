@@ -51,7 +51,7 @@ when 'custom-package'
     default['python']['version'] = '2.7.9-1.el6.gd'
   end
 when 'package'
-  default['python']['version'] = '2.6.6-52.el6'
+  default['python']['version'] = '2.6.6-64.el6'
 when 'source'
   default['python']['version'] = '2.7.9'
 end
