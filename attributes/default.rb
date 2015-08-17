@@ -46,7 +46,7 @@ case node['python']['install_method']
 when 'custom-package'
   case platform
   when 'amazon'
-    default['python']['version'] = '2.7.9'
+    default['python']['version'] = '2.7.9-1.amzn1.gd'
   else
     default['python']['version'] = '2.7.9-1.el6.gd'
   end
