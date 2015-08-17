@@ -2,6 +2,10 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v1.5.2
+------
+- Franklin Hanson: Fix default python version for amazon platform
+
 v1.5.1
 ------
 - Kris Vincent: Adding ServerSpec Testing
