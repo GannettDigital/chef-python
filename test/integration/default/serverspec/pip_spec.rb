@@ -12,5 +12,5 @@ end
 
 describe command('/usr/local/bin/pip show pip') do
   its(:stdout) { should contain('Name: pip') }
-  its(:stdout) { should contain('Version: 7.1.0') }
+  its(:stdout) { should contain('Version: 7.1.2') }
 end

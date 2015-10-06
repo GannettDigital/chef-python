@@ -20,5 +20,5 @@ end
 
 describe command("#{pip_binary} show pip") do
   its(:stdout) { should contain('Name: pip') }
-  its(:stdout) { should contain('Version: 7.1.0') }
+  its(:stdout) { should contain('Version: 7.1.2') }
 end
