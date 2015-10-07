@@ -47,11 +47,24 @@ when 'custom-package'
   case platform
   when 'amazon'
     default['python']['version'] = '2.7.9-1.amzn1.gd'
-  else
-    default['python']['version'] = '2.7.9-1.el6.gd'
+  when 'centos', 'redhat'
+    if node['platform_version'].to_f >= 7
+      default['python']['version'] = '2.7.5-18.el7_1.1'
+    else
+      default['python']['version'] = '2.7.9-1.el6.gd'
+    end
   end
 when 'package'
-  default['python']['version'] = '2.6.6-64.el6'
+  case platform
+  when 'centos', 'redhat'
+    if node['platform_version'].to_f >= 7
+      default['python']['version'] = '2.7.5-18.el7_1.1'
+    else
+      default['python']['version'] = '2.6.6-64.el6'
+    end
+  else
+    default['python']['version'] = '2.6.6-64.el6'
+  end
 when 'source'
   default['python']['version'] = '2.7.9'
 end
