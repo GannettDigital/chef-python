@@ -2,6 +2,10 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v1.5.5
+------
+- Jason Neves - version bump for centos 7 python version
+
 v1.5.4
 -----
 - Jason Neves - Initial support for centos 7

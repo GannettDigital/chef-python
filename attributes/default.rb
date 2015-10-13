@@ -49,7 +49,7 @@ when 'custom-package'
     default['python']['version'] = '2.7.9-1.amzn1.gd'
   when 'centos', 'redhat'
     if node['platform_version'].to_f >= 7
-      default['python']['version'] = '2.7.5-18.el7_1.1'
+      default['python']['version'] = '2.7.9-1.el7.centos.gd'
     else
       default['python']['version'] = '2.7.9-1.el6.gd'
     end
