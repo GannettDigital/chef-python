@@ -34,12 +34,12 @@ namespace :integration do
     end
   end
   task :ec2 do
-    Kitchen.logger = Kitchen.default_file_logger
-    @loader = Kitchen::Loader::YAML.new(project_config: './.kitchen.ec2.yml')
-    config = Kitchen::Config.new(loader: @loader)
-    config.instances.each do |instance|
-      instance.test(:always)
-    end
+    ENV['KITCHEN_YAML'] = './.kitchen.ec2.yml'
+    Kitchen::CLI.new([], concurrency: 5, destroy: 'always').test
+  end
+  task :ec2_singlethread do
+    ENV['KITCHEN_YAML'] = './.kitchen.ec2.yml'
+    Kitchen::CLI.new([], destroy: 'always').test
   end
 end
 
