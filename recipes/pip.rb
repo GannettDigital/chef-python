@@ -23,15 +23,15 @@
 # redhat/package: /usr/bin/pip (sha a8a3a3)
 # omnibus/source: /opt/local/bin/pip (sha 29ce9874)
 
-if node['python']['install_method'] == 'source'
-  pip_binary = "#{node['python']['prefix_dir']}/bin/pip"
-elsif platform_family?('rhel', 'fedora')
-  pip_binary = '/usr/bin/pip'
-elsif platform_family?('smartos')
-  pip_binary = '/opt/local/bin/pip'
-else
-  pip_binary = '/usr/local/bin/pip'
-end
+pip_binary = if node['python']['install_method'] == 'source'
+               "#{node['python']['prefix_dir']}/bin/pip"
+             elsif platform_family?('rhel', 'fedora')
+               '/usr/bin/pip'
+             elsif platform_family?('smartos')
+               '/opt/local/bin/pip'
+             else
+               '/usr/local/bin/pip'
+             end
 
 cookbook_file "#{Chef::Config[:file_cache_path]}/get-pip.py" do
   source 'get-pip.py'
@@ -43,11 +43,11 @@ execute 'install-pip' do
   cwd Chef::Config[:file_cache_path]
   if node['python']['install_method'] == 'custom-package'
     command <<-EOF
-    #{node['python']['custom_binary']} get-pip.py
+    #{node['python']['custom_binary']} get-pip.py pip==#{node['python']['pip']['version']}
     EOF
   else
     command <<-EOF
-    #{node['python']['binary']} get-pip.py
+    #{node['python']['binary']} get-pip.py pip==#{node['python']['pip']['version']}
     EOF
   end
   not_if { ::File.exist?(pip_binary) }

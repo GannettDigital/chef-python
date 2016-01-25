@@ -2,6 +2,11 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v1.6.0
+------
+- Jason Neves - updated cookbook to be able to pin pip version installed,
+                added target "custom-package" to kitchen and tests for it
+
 v1.5.5
 ------
 - Jason Neves - version bump for centos 7 python version
