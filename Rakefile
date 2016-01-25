@@ -1,7 +1,7 @@
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'foodcritic'
-require 'kitchen'
+require 'kitchen/cli'
 
 # Style tests. Rubocop and Foodcritic
 namespace :style do
@@ -46,4 +46,5 @@ end
 # Default
 task default: ['style', 'spec', 'integration:vagrant']
 task ec2: ['style', 'spec', 'integration:ec2']
+task ec2_singlethread: ['style', 'spec', 'integration:ec2_singlethread']
 task test: ['style', 'spec']
