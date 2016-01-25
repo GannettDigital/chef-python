@@ -9,10 +9,10 @@ provisioner:
   chef_zero_port: 9010
 
 platforms:
-- name: centos-6.6
-  driver_config:
-    box: opscode-centos-6.6
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.6_provisionerless.box
+- name: gdp-centos-6.7
+  driver:
+    box: centos-67
+    box_url: https://deploy.gmti.gbahn.net/Images/CentOS6/vagrant/centos67-cloud-1.0.0.box
 
 suites:
 - name: default
@@ -30,6 +30,15 @@ suites:
   attributes:
     python:
       install_method: "package"
+      setuptools_version: 18.0.1
+      virtualenv_version: 13.1.0
+- name: custom-package
+  run_list:
+  - recipe[yum-gd]
+  - recipe[python]
+  attributes:
+    python:
+      install_method: "custom-package"
       setuptools_version: 18.0.1
       virtualenv_version: 13.1.0
 - name: source

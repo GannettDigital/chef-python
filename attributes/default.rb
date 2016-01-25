@@ -21,12 +21,12 @@
 default['python']['install_method'] = 'custom-package'
 
 if node['python']['install_method'] == 'package'
-  case platform
-  when 'smartos'
-    default['python']['prefix_dir'] = '/opt/local'
-  else
-    default['python']['prefix_dir'] = '/usr'
-  end
+  default['python']['prefix_dir'] = case platform
+                                    when 'smartos'
+                                      '/opt/local'
+                                    else
+                                      '/usr'
+                                    end
 else
   default['python']['prefix_dir'] = '/usr/local'
 end
@@ -34,12 +34,12 @@ end
 default['python']['binary'] = "#{node['python']['prefix_dir']}/bin/python"
 
 if node['python']['install_method'] == 'custom-package'
-  case platform
-  when 'amazon'
-    default['python']['custom_package_name'] = 'python27alt'
-  else
-    default['python']['custom_package_name'] = 'python27'
-  end
+  default['python']['custom_package_name'] = case platform
+                                             when 'amazon'
+                                               'python27alt'
+                                             else
+                                               'python27'
+                                             end
 end
 
 case node['python']['install_method']
@@ -48,20 +48,20 @@ when 'custom-package'
   when 'amazon'
     default['python']['version'] = '2.7.9-1.amzn1.gd'
   when 'centos', 'redhat'
-    if node['platform_version'].to_f >= 7
-      default['python']['version'] = '2.7.9-1.el7.centos.gd'
-    else
-      default['python']['version'] = '2.7.9-1.el6.gd'
-    end
+    default['python']['version'] = if node['platform_version'].to_f >= 7
+                                     '2.7.9-1.el7.centos.gd'
+                                   else
+                                     '2.7.9-1.el6.gd'
+                                   end
   end
 when 'package'
   case platform
   when 'centos', 'redhat'
-    if node['platform_version'].to_f >= 7
-      default['python']['version'] = '2.7.5-18.el7_1.1'
-    else
-      default['python']['version'] = '2.6.6-64.el6'
-    end
+    default['python']['version'] = if node['platform_version'].to_f >= 7
+                                     '2.7.5-18.el7_1.1'
+                                   else
+                                     '2.6.6-64.el6'
+                                   end
   else
     default['python']['version'] = '2.6.6-64.el6'
   end
@@ -79,3 +79,4 @@ default['python']['pip_location'] = "#{node['python']['prefix_dir']}/bin/pip"
 default['python']['virtualenv_location'] = "#{node['python']['prefix_dir']}/bin/virtualenv"
 default['python']['setuptools_version'] = nil # defaults to latest
 default['python']['virtualenv_version'] = nil
+default['python']['pip']['version'] = '7.1.2'

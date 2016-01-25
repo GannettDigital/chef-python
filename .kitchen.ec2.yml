@@ -19,7 +19,7 @@ transport:
   ssh_key: ~/.ssh/<%= ENV['AWS_SSH_KEY'] %>.pem
 
 platforms:
-  - name: centos-6.6-python-integration-tests
+  - name: centos-6.7-python-integration-tests
     driver:
       image_id: <%= ENV['AWS_AMI_ID'] %>
 
@@ -39,6 +39,15 @@ suites:
   attributes:
     python:
       install_method: "package"
+      setuptools_version: 18.0.1
+      virtualenv_version: 13.1.0
+- name: custom-package
+  run_list:
+  - recipe[yum-gd]
+  - recipe[python]
+  attributes:
+    python:
+      install_method: "custom-package"
       setuptools_version: 18.0.1
       virtualenv_version: 13.1.0
 - name: source
