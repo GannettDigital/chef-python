@@ -23,7 +23,7 @@ node('chef13') {
    }
    stage 'GD foodcritic'
      // Run our foodcritic tests
-     sh 'foodcritic -f "any" -t "~FC071" -t "~FC078" -t "~FC104" -X "spec/**/*" -X "test/**/*" -I $FC_RULES_LOCATION .'
+     sh 'foodcritic -f "any" -t "~FC071" -t "~FC078" -t "~FC085" -t "~FC104" -X "spec/**/*" -X "test/**/*" -I $FC_RULES_LOCATION .'
    stage 'EC2 integration tests'
      // this is the "chef exec bundle exec rake ec2 job"
      sh 'chef exec bundle install && chef exec bundle exec rake ec2'
