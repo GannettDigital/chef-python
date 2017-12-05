@@ -19,13 +19,7 @@
 #
 
 actions :install, :upgrade, :remove, :purge
-default_action :install if defined?(default_action) # Chef > 10.8
-
-# Default action for Chef <= 10.8
-def initialize(*args)
-  super
-  @action = :install
-end
+default_action :install if defined?(default_action)
 
 attribute :package_name, :kind_of => String, :name_attribute => true
 attribute :version, :default => nil

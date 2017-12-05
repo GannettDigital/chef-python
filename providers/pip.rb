@@ -33,7 +33,7 @@ end
 
 action :install do
   # If we specified a version, and it's not the current version, move to the specified version
-  if !new_resource.version.nil?  && new_resource.version != current_resource.version
+  if !new_resource.version.nil? && new_resource.version != current_resource.version
     install_version = new_resource.version
   # If it's not installed at all, install it
   elsif current_resource.version.nil?
@@ -104,7 +104,7 @@ end
 def current_installed_version
   @current_installed_version ||= begin
     out = nil
-    package_name = new_resource.package_name.gsub('_', '-')
+    package_name = new_resource.package_name.tr('_', '-')
     pattern = Regexp.new("^#{Regexp.escape(package_name)} \\(([^)]+)\\)$", true)
     shell_out("#{which_pip(new_resource)} list").stdout.lines.find do |line|
       out = pattern.match(line)
@@ -125,12 +125,12 @@ end
 def install_package(version)
   # if a version isn't specified (latest), is a source archive (ex. http://my.package.repo/SomePackage-1.0.4.zip),
   # or from a VCS (ex. git+https://git.repo/some_pkg.git) then do not append a version as this will break the source link
-  if version == 'latest' || new_resource.package_name.downcase.start_with?('http:', 'https:') \
-                         || ['git', 'hg', 'svn'].include?(new_resource.package_name.downcase.split('+')[0])
-    version = ''
-  else
-    version = "==#{version}"
-  end
+  version = if version == 'latest' || new_resource.package_name.downcase.start_with?('http:', 'https:') \
+            || ['git', 'hg', 'svn'].include?(new_resource.package_name.downcase.split('+')[0])
+              ''
+            else
+              "==#{version}"
+            end
   pip_cmd('install', version)
 end
 

@@ -6,25 +6,29 @@ driver:
   availability_zone: <%= ENV['AWS_AVAILABILITY_ZONE'] %>
   require_chef_omnibus: true
   subnet_id: <%= ENV['AWS_SUBNET'] %>
-  instance_type: <%= ENV['INSTANCE_SIZE'] %>
   associate_public_ip: false
   interface: private
-  user_data: <%= ENV['USER_DATA_PATH'] %>
   tags:
     OWNER: <%= ENV['AWS_OWNER_TAG'] %>
     Name: <%= ENV['AWS_NAME_TAG'] %>
+    ENVIRONMENT: <%= ENV['AWS_ENVIRONMENT_TAG'] %>
+
 
 provisioner:
   name: chef_zero
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
 
 transport:
-  username: cloud-user
   ssh_key: ~/.ssh/<%= ENV['AWS_SSH_KEY'] %>.pem
 
 platforms:
-  - name: centos-6.7-python-integration-tests
+  - name: gci-centos7
     driver:
-      image_id: <%= ENV['AWS_AMI_ID'] %>
+      image_id: <%= ENV['AWS_GCI_CENTOS7_AMI_ID'] %>
+      instance_type: <%= ENV['LINUX_INSTANCE_SIZE'] %>
+      user_data: <%= ENV['LINUX_USER_DATA_PATH'] %>
+    transport:
+      username: <%= ENV['AWS_CENTOS7_USERNAME'] %>
 
 suites:
 - name: default

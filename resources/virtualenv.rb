@@ -19,13 +19,7 @@
 #
 
 actions :create, :delete
-default_action :create if defined?(default_action) # Chef > 10.8
-
-# Default action for Chef <= 10.8
-def initialize(*args)
-  super
-  @action = :create
-end
+default_action :create if defined?(default_action)
 
 attribute :path, :kind_of => String, :name_attribute => true
 attribute :interpreter, :kind_of => String
