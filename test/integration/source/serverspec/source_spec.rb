@@ -17,10 +17,6 @@ if os[:family] == 'redhat'
     it { should be_installed }
   end
 
-  describe package('db4-devel') do
-    it { should be_installed }
-  end
-
   describe package('sqlite-devel') do
     it { should be_installed }
   end

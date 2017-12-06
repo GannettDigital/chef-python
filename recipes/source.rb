@@ -31,7 +31,7 @@ packages = value_for_platform_family(
              'db4-devel',
              'sqlite-devel',
              'ncurses-devel',
-             'readline-devel'
+             'readline-devel',
             ],
   'default' => ['libssl-dev',
                 'libbz2-dev',
@@ -43,7 +43,7 @@ packages = value_for_platform_family(
                 'libncurses5-dev',
                 'libreadline-dev',
                 'libsasl2-dev',
-                'libgdbm-dev'
+                'libgdbm-dev',
                ]
 )
 #

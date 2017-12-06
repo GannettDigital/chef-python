@@ -1,18 +1,14 @@
 ---
 driver:
   name: vagrant
-  customize:
-      memory: 2048
+  pre_create_command: "cd {{vagrant_root}}/ && vagrant box update"
 
 provisioner:
   name: chef_zero
-  chef_zero_port: 9010
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
 
 platforms:
-- name: gdp-centos-6.7
-  driver:
-    box: centos-67
-    box_url: https://deploy.gmti.gbahn.net/Images/CentOS6/vagrant/centos67-cloud-1.0.0.box
+  - name: gannett/gci-centos7
 
 suites:
 - name: default

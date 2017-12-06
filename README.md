@@ -9,8 +9,7 @@ Installs and configures Python.  Also includes LWRPs for managing python package
 Requirements
 ------------
 ### Platforms
-- Debian, Ubuntu
-- CentOS, Red Hat, Fedora
+- CentOS
 
 ### Cookbooks
 - build-essential

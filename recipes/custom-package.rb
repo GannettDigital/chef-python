@@ -23,15 +23,7 @@
 
 include_recipe 'yum-gd'
 
-python_pkgs = value_for_platform_family(
-  'debian'  => [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-dev"],
-  'rhel'    => [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-devel"],
-  'centos'  => [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-devel"],
-  'fedora'  => [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-devel"],
-  'freebsd' => [node['python']['custom_package_name']],
-  'smartos' => [node['python']['custom_package_name']],
-  'default' => [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-dev"]
-)
+python_pkgs = [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-devel"]
 
 python_pkgs.each do |pkg|
   package pkg do

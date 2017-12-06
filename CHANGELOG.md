@@ -2,6 +2,10 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v2.0.0
+------
+- Franklin Hanson - updated cookbook for chef client 13 and deprecate OS that we no longer support on platform (PAAS-10840)
+
 v1.6.0
 ------
 - Jason Neves - updated cookbook to be able to pin pip version installed,
