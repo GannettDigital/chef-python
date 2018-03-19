@@ -35,6 +35,7 @@ suites:
   run_list:
   - recipe[yum-gd]
   - recipe[python]
+  - recipe[virtualenv-test]
   attributes:
     python:
       setuptools_version: 18.0.1
@@ -45,6 +46,7 @@ suites:
   run_list:
   - recipe[yum-gd]
   - recipe[python]
+  - recipe[virtualenv-test]
   attributes:
     python:
       setuptools_version: 18.0.1
@@ -53,6 +55,7 @@ suites:
   run_list:
   - recipe[yum-gd]
   - recipe[python]
+  - recipe[virtualenv-test]
   attributes:
     python:
       install_method: "package"
@@ -62,6 +65,7 @@ suites:
   run_list:
   - recipe[yum-gd]
   - recipe[python]
+  - recipe[virtualenv-test]
   attributes:
     python:
       install_method: "custom-package"
@@ -71,6 +75,7 @@ suites:
   run_list:
   - recipe[yum-gd]
   - recipe[python]
+  - recipe[virtualenv-test]
   attributes:
     python:
       install_method: "source"

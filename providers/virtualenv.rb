@@ -27,6 +27,8 @@ def whyrun_supported?
   true
 end
 
+use_inline_resources
+
 action :create do
   unless exists?
     directory new_resource.path do
@@ -54,7 +56,7 @@ action :delete do
 end
 
 def load_current_resource
-  @current_resource = Chef::Resource::PythonVirtualenv.new(new_resource.name)
+  @current_resource = Chef::ResourceResolver.resolve(:python_virtualenv).new(new_resource.name)
   @current_resource.path(new_resource.path)
 
   if exists?
