@@ -13,7 +13,7 @@ namespace :style do
   FoodCritic::Rake::LintTask.new(:chef) do |t|
     t.options = {
       fail_tags: ['any'],
-      tags: ['~FC005', '~FC071', '~FC078', '~FC085', '~FC104'],
+      tags: ['~FC071', '~FC078', '~FC104'],
     }
   end
 end
@@ -42,10 +42,15 @@ namespace :integration do
     ENV['KITCHEN_YAML'] = './.kitchen.ec2.yml'
     Kitchen::CLI.new([], destroy: 'always').test
   end
+  task :gce do
+    ENV['KITCHEN_YAML'] = './.kitchen.gce.yml'
+    Kitchen::CLI.new([], concurrency: 5, destroy: 'always').test
+  end
 end
 
 # Default
 task default: ['style', 'spec', 'integration:vagrant']
+task ci: ['style', 'spec', 'integration:ec2', 'integration:gce']
 task ec2: ['style', 'spec', 'integration:ec2']
 task ec2_singlethread: ['style', 'spec', 'integration:ec2_singlethread']
 task test: ['style', 'spec']

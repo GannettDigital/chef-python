@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-# custom gems and versions
-gem 'chef-handler-profiler', '= 0.0.2'
-
 # chef-dk version: 2.4.15
 # https://github.com/chef/chef-dk/blob/e989052399f5ef82b0f6be024b345b528c681d1e/Gemfile.lock
 gem 'activesupport', '= 5.1.4'
