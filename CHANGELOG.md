@@ -2,6 +2,11 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v2.0.1
+------
+- Dane Thorsen - Updated to work with chef 13 ResourceResolver (PENG-1428)
+- Dane Thorsen - Add Google Cloud testing (PENG-1428)
+
 v2.0.0
 ------
 - Franklin Hanson - updated cookbook for chef client 13 and deprecate OS that we no longer support on platform (PAAS-10840)

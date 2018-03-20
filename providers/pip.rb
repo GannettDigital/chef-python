@@ -27,6 +27,8 @@ def whyrun_supported?
   true
 end
 
+use_inline_resources
+
 # the logic in all action methods mirror that of
 # the Chef::Provider::Package which will make
 # refactoring into core chef easy
@@ -44,8 +46,7 @@ action :install do
     description = "install package #{new_resource} version #{install_version}"
     converge_by(description) do
       Chef::Log.info("Installing #{new_resource} version #{install_version}")
-      status = install_package(install_version)
-      new_resource.updated_by_last_action(true) if status
+      install_package(install_version)
     end
   end
 end
@@ -56,8 +57,7 @@ action :upgrade do
     description = "upgrade #{current_resource} version from #{current_resource.version} to #{candidate_version}"
     converge_by(description) do
       Chef::Log.info("Upgrading #{new_resource} version from #{orig_version} to #{candidate_version}")
-      status = upgrade_package(candidate_version)
-      new_resource.updated_by_last_action(true) if status
+      upgrade_package(candidate_version)
     end
   end
 end
@@ -68,7 +68,6 @@ action :remove do
     converge_by(description) do
       Chef::Log.info("Removing #{new_resource}")
       remove_package(new_resource.version)
-      new_resource.updated_by_last_action(true)
     end
   end
 end
@@ -90,7 +89,7 @@ end
 # so refactoring into core Chef should be easy
 
 def load_current_resource
-  @current_resource = Chef::Resource::PythonPip.new(new_resource.name)
+  @current_resource = Chef::ResourceResolver.resolve(:python_pip).new(new_resource.name)
   @current_resource.package_name(new_resource.package_name)
   @current_resource.version(nil)
 
