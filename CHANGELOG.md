@@ -2,6 +2,10 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v2.0.2
+------
+- Brian Lieberman - remove unused & deprecated mixin for chef-14 support (PENG-1975)
+
 v2.0.1
 ------
 - Dane Thorsen - Updated to work with chef 13 ResourceResolver (PENG-1428)
