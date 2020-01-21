@@ -35,7 +35,7 @@ case node['python']['install_method']
 when 'custom-package'
   default['python']['version'] = '2.7.9-1.el7.centos.gd'
 when 'package'
-  default['python']['version'] = '2.7.5-58.el7'
+  default['python']['version'] = '2.7.5-80.el7_6'
 when 'source'
   default['python']['version'] = '2.7.9'
 end
@@ -51,3 +51,4 @@ default['python']['virtualenv_location'] = "#{node['python']['prefix_dir']}/bin/
 default['python']['setuptools_version'] = nil # defaults to latest
 default['python']['virtualenv_version'] = nil
 default['python']['pip']['version'] = '7.1.2'
+default['python']['setuptools_version'] = '44.0.0'
