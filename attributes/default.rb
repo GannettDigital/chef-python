@@ -35,7 +35,7 @@ case node['python']['install_method']
 when 'custom-package'
   default['python']['version'] = '2.7.9-1.el7.centos.gd'
 when 'package'
-  default['python']['version'] = '2.7.5-58.el7'
+  default['python']['version'] = '2.7.5-80.el7_6'
 when 'source'
   default['python']['version'] = '2.7.9'
 end
