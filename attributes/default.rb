@@ -51,3 +51,4 @@ default['python']['virtualenv_location'] = "#{node['python']['prefix_dir']}/bin/
 default['python']['setuptools_version'] = nil # defaults to latest
 default['python']['virtualenv_version'] = nil
 default['python']['pip']['version'] = '7.1.2'
+default['python']['setuptools_version'] = '44.0.0'

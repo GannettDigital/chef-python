@@ -43,11 +43,11 @@ execute 'install-pip' do
   cwd Chef::Config[:file_cache_path]
   if node['python']['install_method'] == 'custom-package'
     command <<-EOF
-    #{node['python']['custom_binary']} get-pip.py pip==#{node['python']['pip']['version']}
+    #{node['python']['custom_binary']} get-pip.py --no-setuptools pip==#{node['python']['pip']['version']}
     EOF
   else
     command <<-EOF
-    #{node['python']['binary']} get-pip.py pip==#{node['python']['pip']['version']}
+    #{node['python']['binary']} get-pip.py --no-setuptools pip==#{node['python']['pip']['version']}
     EOF
   end
   not_if { ::File.exist?(pip_binary) }
