@@ -11,16 +11,12 @@ describe 'python::custom-package' do
       end.converge(described_recipe)
     end
 
-    it 'includes yum-gd' do
-      expect(chef_run).to include_recipe('yum-gd')
-    end
-
     it 'installs python27' do
       expect(chef_run).to install_package('python27')
     end
 
     it 'installs python-devel' do
       expect(chef_run).to install_package('python27-devel')
-    end 
+    end
   end
 end
