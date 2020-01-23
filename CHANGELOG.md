@@ -2,6 +2,10 @@ python Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the python cookbook.
 
+v2.0.4
+------
+- Joseph Kregloh - Removing yum-gd. (PENG-14254)
+
 v2.0.3
 ------
 - Joseph Kregloh - Fix for Python setuptools version (PENG-14437)

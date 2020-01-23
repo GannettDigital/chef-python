@@ -34,7 +34,6 @@ platforms:
 suites:
 - name: default
   run_list:
-  - recipe[yum-gd]
   - recipe[python]
   - recipe[virtualenv-test]
   attributes:
@@ -45,7 +44,6 @@ suites:
   provisioner:
     require_chef_omnibus: 14.0.202
   run_list:
-  - recipe[yum-gd]
   - recipe[python]
   - recipe[virtualenv-test]
   attributes:
@@ -54,7 +52,6 @@ suites:
       virtualenv_version: 13.1.0
 - name: package
   run_list:
-  - recipe[yum-gd]
   - recipe[python]
   - recipe[virtualenv-test]
   attributes:
@@ -64,7 +61,6 @@ suites:
       virtualenv_version: 13.1.0
 - name: custom-package
   run_list:
-  - recipe[yum-gd]
   - recipe[python]
   - recipe[virtualenv-test]
   attributes:
@@ -74,7 +70,6 @@ suites:
       virtualenv_version: 13.1.0
 - name: source
   run_list:
-  - recipe[yum-gd]
   - recipe[python]
   - recipe[virtualenv-test]
   attributes:
@@ -82,4 +77,3 @@ suites:
       install_method: "source"
       setuptools_version: 18.0.1
       virtualenv_version: 13.1.0
-
