@@ -21,8 +21,6 @@
 # This recipe assumes that you have a custom package repository with
 # Python built and named as "python27"
 
-include_recipe 'yum-gd'
-
 python_pkgs = [node['python']['custom_package_name'], "#{node['python']['custom_package_name']}-devel"]
 
 python_pkgs.each do |pkg|
